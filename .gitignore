@@ -1,3 +1,4 @@
+# Node / full-stack app
 node_modules/
 uploads/
 .env
@@ -5,3 +6,17 @@ uploads/
 *.log
 .DS_Store
 dist/
+
+# Python
+__pycache__/
+*.py[codz]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Editor / tooling
+.cursorignore
+.cursorindexingignore
+.idea/
+.vscode/

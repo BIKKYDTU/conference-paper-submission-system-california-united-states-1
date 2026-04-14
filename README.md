@@ -1,0 +1,2 @@
+# conference-paper-submission-system-california-united-states-1
+This project is a full-stack web application for managing academic conference workflows: chairs configure conferences and assignments; authors submit PDFs and metadata; reviewers submit scored reviews; chairs record accept/reject decisions, optional rebuttals, camera-ready uploads, and a published program. The stack includes a React (TypeScript) 
