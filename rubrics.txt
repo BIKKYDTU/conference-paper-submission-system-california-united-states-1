@@ -1,0 +1,53 @@
+## Rubric for: Academic Conference Paper Submission and Peer Review System
+
+### Instruction Following
+
+1. [Weight 5] The backend server is implemented using Node.js with TypeScript and the Express.js framework.
+
+2. [Weight 5] The frontend application is implemented using React with TypeScript.
+
+3. [Weight 5] All application data is persisted using SQLite as the database engine.
+
+4. [Weight 5] User passwords are hashed using bcrypt before storage in the database.
+
+5. [Weight 5] Uploaded PDF files for paper submissions and camera-ready versions are stored on disk with accessible file URLs served by the application.
+
+6. [Weight 3] The Express application instance is exported as the default export from server/app.ts, enabling both production startup and test suite imports.
+
+7. [Weight 5] Authentication tokens are generated and validated using JSON Web Tokens (JWT), encoding the user's ID and role.
+
+### Code Correctness
+
+8. [Weight 5] The database schema enables foreign key enforcement (PRAGMA foreign_keys = ON) and defines normalized tables with foreign key constraints across entities.
+
+9. [Weight 5] The initializeDatabase function creates tables for all nine entities: users, conferences, papers, reviewer_profiles, assignments, reviews, rebuttals, decisions, and sessions.
+
+10. [Weight 5] The assignments table includes a source column with a CHECK constraint restricting values to 'auto' and 'manual', defaulting to 'auto'.
+
+11. [Weight 5] The assignments table includes a UNIQUE constraint on the (paperId, reviewerId) pair to prevent duplicate assignment rows.
+
+12. [Weight 5] The ConferenceCreationForm component renders inputs for name, description, three date fields (submissionDeadline, notificationDate, cameraReadyDeadline), a dynamic input for adding topicAreas entries, and a submissionGuidelines textarea.
+
+13. [Weight 5] The PaperSubmissionForm component renders inputs for title, abstract, a dynamic author list with name/affiliation/email per entry, topic area checkboxes derived from the conference's topic areas, an optional keywords field, and a PDF file input.
+
+14. [Weight 5] The ReviewForm component renders four integer score inputs (originality, technicalQuality, clarity, relevance) accepting values 1 through 5, a recommendation dropdown with options accept, weak_accept, weak_reject, and reject, a reviewText textarea, and a confidentialNote textarea.
+
+15. [Weight 5] The ReviewerDashboard component renders a list of assigned papers, each displaying the paper title, a link to the PDF URL, and a visual indicator reflecting whether a review has been submitted.
+
+16. [Weight 5] The ChairDecisionDashboard component displays papers with their full review data including per-criterion scores and confidentialNote, a statistics section showing acceptance rate and per-criterion score distributions, and accept/reject action buttons per paper.
+
+17. [Weight 5] The AuthorNotificationView component displays the decision status (accept, reject, or pending), a decisionFinal indicator, and anonymized review content showing per-criterion scores and recommendation while excluding the confidentialNote field.
+
+18. [Weight 3] The ProgramBuilder component renders session creation inputs for sessionName, startTime, endTime, and room, along with a mechanism to assign accepted papers from the conference to each session.
+
+19. [Weight 3] The AuthForm component renders email and password fields in both login and register modes, with additional name and role selector fields visible in register mode.
+
+20. [Weight 3] The ReviewerProfileForm component renders editable controls for the reviewer's expertise and conflicts arrays, with pre-population from existing profile data when provided.
+
+21. [Weight 3] The RebuttalForm component renders a textarea for composing and submitting rebuttal text for a paper.
+
+22. [Weight 3] The CameraReadyUploadForm component renders a PDF file input for uploading the camera-ready version of an accepted paper.
+
+### Code Quality
+
+23. [Weight 3] Server code is organized into separate modules for routes, middleware, services, and database access, following separation of concerns.

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backend &amp; API</title>
+    <style>
+      :root {
+        font-family: ui-monospace, monospace;
+        background: #0f1419;
+        color: #e6edf3;
+      }
+      body {
+        max-width: 56rem;
+        margin: 0 auto;
+        padding: 1.25rem;
+        line-height: 1.5;
+      }
+      a {
+        color: #58a6ff;
+      }
+      pre {
+        background: #161b22;
+        padding: 1rem;
+        overflow: auto;
+        border-radius: 6px;
+        border: 1px solid #30363d;
+      }
+      button {
+        cursor: pointer;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        border: 1px solid #30363d;
+        background: #21262d;
+        color: inherit;
+      }
+      button:hover {
+        background: #30363d;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0.75rem 0;
+      }
+      input {
+        padding: 0.35rem 0.5rem;
+        border-radius: 4px;
+        border: 1px solid #30363d;
+        background: #0d1117;
+        color: inherit;
+      }
+      h1 {
+        font-size: 1.25rem;
+      }
+      ul {
+        padding-left: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Backend &amp; API</h1>
+    <p>
+      <a href="/">← Conference UI (frontend)</a>
+    </p>
+
+    <h2>Health</h2>
+    <div class="row">
+      <button type="button" id="healthBtn">GET /api/health</button>
+    </div>
+    <pre id="healthOut">(not requested yet)</pre>
+
+    <h2>Auth probe</h2>
+    <p>POST JSON to <code>/api/auth/login</code> (expects registered user).</p>
+    <div class="row">
+      <input type="email" id="email" placeholder="email" autocomplete="username" />
+      <input type="password" id="password" placeholder="password" autocomplete="current-password" />
+      <button type="button" id="loginBtn">Login</button>
+    </div>
+    <pre id="loginOut">(not requested yet)</pre>
+
+    <h2>Main API routes</h2>
+    <ul>
+      <li><code>POST /api/auth/register</code>, <code>POST /api/auth/login</code></li>
+      <li><code>POST /api/conferences</code> (chair, Bearer token)</li>
+      <li><code>GET /api/conferences/:id</code></li>
+      <li><code>POST /api/conferences/:conferenceId/papers</code> (author, multipart)</li>
+      <li><code>/uploads/*</code> static files</li>
+    </ul>
+
+    <script>
+      const healthOut = document.getElementById('healthOut');
+      const loginOut = document.getElementById('loginOut');
+
+      document.getElementById('healthBtn').onclick = async () => {
+        healthOut.textContent = 'Loading…';
+        try {
+          const r = await fetch('/api/health');
+          healthOut.textContent = JSON.stringify(await r.json(), null, 2);
+        } catch (e) {
+          healthOut.textContent = String(e);
+        }
+      };
+
+      document.getElementById('loginBtn').onclick = async () => {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        loginOut.textContent = 'Loading…';
+        try {
+          const r = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+          });
+          loginOut.textContent = JSON.stringify(await r.json(), null, 2);
+        } catch (e) {
+          loginOut.textContent = String(e);
+        }
+      };
+    </script>
+  </body>
+</html>

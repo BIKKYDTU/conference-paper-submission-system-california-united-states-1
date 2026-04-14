@@ -1,0 +1,2239 @@
+Running all tests...
+FAIL tests/assignment.test.ts
+  POST /api/conferences/:conferenceId/assign (auto-assignment)
+    ✕ should assign reviewers whose expertise overlaps with paper topic areas and return assignments with assignmentId, paperId, and reviewerId
+    ✕ should not assign a reviewer whose expertise does not overlap with the paper topic areas
+    ✕ should not assign a reviewer who has a declared conflict with any of the paper authors
+    ✕ should list papers with zero eligible reviewers in unassignedPaperIds
+    ✕ should list papers that received fewer than reviewersPerPaper eligible reviewers in underAssignedPaperIds
+    ✕ should default reviewersPerPaper to 3 when the body does not specify it
+    ✕ should distribute assignments as evenly as possible across eligible reviewers (1 ms)
+    ✕ should produce the same assignment count when auto-assign is re-run, replacing previous auto assignments
+    ✕ should count existing manual assignments toward the reviewersPerPaper target
+    ✕ should assign up to reviewersPerPaper eligible reviewers to each paper
+    ✕ should return 403 for non-chair roles
+  Re-running auto-assign preserves manual assignments
+    ✕ should keep manually-created assignments intact when auto-assign is re-run
+  POST /api/conferences/:conferenceId/assignments (manual)
+    ✕ should create a manual assignment and return 201 with assignmentId, paperId, and reviewerId
+    ✕ should return 403 for non-chair roles
+  DELETE /api/conferences/:conferenceId/assignments/:assignmentId
+    ✕ should delete an assignment and return 200 with a message
+    ✕ should return 404 when the assignment does not exist
+    ✕ should return 403 for non-chair roles
+  GET /api/reviewers/assignments
+    ✕ should return assigned papers with paperId, title, conferenceId, pdfUrl, and reviewed boolean
+    ✕ should set reviewed to true after a review is submitted for the assigned paper
+    ✕ should return assignments from multiple conferences for a single reviewer
+    ✕ should return 403 for non-reviewer roles
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should assign reviewers whose expertise overlaps with paper topic areas and return assignments with assignmentId, paperId, and reviewerId
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should not assign a reviewer whose expertise does not overlap with the paper topic areas
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should not assign a reviewer who has a declared conflict with any of the paper authors
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should list papers with zero eligible reviewers in unassignedPaperIds
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should list papers that received fewer than reviewersPerPaper eligible reviewers in underAssignedPaperIds
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should default reviewersPerPaper to 3 when the body does not specify it
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should distribute assignments as evenly as possible across eligible reviewers
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should produce the same assignment count when auto-assign is re-run, replacing previous auto assignments
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should count existing manual assignments toward the reviewersPerPaper target
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should assign up to reviewersPerPaper eligible reviewers to each paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assign (auto-assignment) › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● Re-running auto-assign preserves manual assignments › should keep manually-created assignments intact when auto-assign is re-run
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assignments (manual) › should create a manual assignment and return 201 with assignmentId, paperId, and reviewerId
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/assignments (manual) › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● DELETE /api/conferences/:conferenceId/assignments/:assignmentId › should delete an assignment and return 200 with a message
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● DELETE /api/conferences/:conferenceId/assignments/:assignmentId › should return 404 when the assignment does not exist
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● DELETE /api/conferences/:conferenceId/assignments/:assignmentId › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/assignments › should return assigned papers with paperId, title, conferenceId, pdfUrl, and reviewed boolean
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/assignments › should set reviewed to true after a review is submitted for the assigned paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/assignments › should return assignments from multiple conferences for a single reviewer
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/assignments › should return 403 for non-reviewer roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/assignment.test.ts:20:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/rebuttal.test.ts
+  POST /api/papers/:paperId/rebuttal
+    ✕ should submit a rebuttal and return 201 with paperId, rebuttalText, and submittedAt timestamp
+    ✕ should return 409 when a final decision has already been recorded for the paper
+    ✕ should return 403 with error message when the rebuttal period has closed (after notificationDate)
+    ✕ should return 403 for a user who is not the paper submitting author
+  GET /api/papers/:paperId/rebuttal
+    ✕ should return the stored rebuttal text and submittedAt for the chair role
+    ✕ should return 404 when no rebuttal has been submitted for the paper
+    ✕ should return 403 for non-chair roles
+  GET /api/papers/:paperId/reviews-for-rebuttal
+    ✕ should return anonymized reviews with scores and recommendation, excluding confidentialNote, during the rebuttal phase
+    ✕ should return 403 when a final decision has already been recorded
+    ✕ should return 403 when the current time is after the conference notificationDate
+    ✕ should return 403 for a user who is not the paper submitting author
+
+  ● POST /api/papers/:paperId/rebuttal › should submit a rebuttal and return 201 with paperId, rebuttalText, and submittedAt timestamp
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/rebuttal › should return 409 when a final decision has already been recorded for the paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/rebuttal › should return 403 with error message when the rebuttal period has closed (after notificationDate)
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/rebuttal › should return 403 for a user who is not the paper submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/rebuttal › should return the stored rebuttal text and submittedAt for the chair role
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/rebuttal › should return 404 when no rebuttal has been submitted for the paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/rebuttal › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews-for-rebuttal › should return anonymized reviews with scores and recommendation, excluding confidentialNote, during the rebuttal phase
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews-for-rebuttal › should return 403 when a final decision has already been recorded
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews-for-rebuttal › should return 403 when the current time is after the conference notificationDate
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews-for-rebuttal › should return 403 for a user who is not the paper submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/rebuttal.test.ts:17:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/paper.test.ts
+  POST /api/conferences/:conferenceId/papers
+    ✕ should submit a paper via multipart form-data and return 201 with paperId, title, conferenceId, and status "submitted"
+    ✕ should accept a submission without the optional keywords field
+    ✕ should return 403 for non-author roles attempting to submit a paper
+    ✕ should return 403 with error message when the submission deadline has passed
+    ✕ should generate a unique paperId for each submitted paper
+  GET /api/conferences/:conferenceId/papers
+    ✕ should return all papers for the conference with full metadata when requested by chair
+    ✕ should return an empty array when no papers have been submitted to the conference
+    ✕ should include the decision field for papers that have received a chair decision
+    ✕ should return 403 for non-chair roles
+  GET /api/papers/:paperId
+    ✕ should return the paper record with metadata and pdfUrl, and include authors for the chair role (1 ms)
+    ✕ should include authors field when requested by the submitting author
+    ✕ should omit authors field when requested by a reviewer to preserve review integrity
+
+  ● POST /api/conferences/:conferenceId/papers › should submit a paper via multipart form-data and return 201 with paperId, title, conferenceId, and status "submitted"
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/papers › should accept a submission without the optional keywords field
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/papers › should return 403 for non-author roles attempting to submit a paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/papers › should return 403 with error message when the submission deadline has passed
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/papers › should generate a unique paperId for each submitted paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/papers › should return all papers for the conference with full metadata when requested by chair
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/papers › should return an empty array when no papers have been submitted to the conference
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/papers › should include the decision field for papers that have received a chair decision
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/papers › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should return the paper record with metadata and pdfUrl, and include authors for the chair role
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should return the paper record with metadata and pdfUrl, and include authors for the chair role
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      117 |   req.attach('file', createTestPdfBuffer(), 'test-paper.pdf');
+      118 |
+    > 119 |   const res = await req.expect(201);
+          |                         ^
+      120 |   return res.body;
+      121 | }
+      122 |
+
+      at submitPaper (tests/helpers.ts:119:25)
+      at Object.<anonymous> (tests/paper.test.ts:178:36)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should include authors field when requested by the submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should include authors field when requested by the submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      117 |   req.attach('file', createTestPdfBuffer(), 'test-paper.pdf');
+      118 |
+    > 119 |   const res = await req.expect(201);
+          |                         ^
+      120 |   return res.body;
+      121 | }
+      122 |
+
+      at submitPaper (tests/helpers.ts:119:25)
+      at Object.<anonymous> (tests/paper.test.ts:178:36)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should omit authors field when requested by a reviewer to preserve review integrity
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/paper.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId › should omit authors field when requested by a reviewer to preserve review integrity
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      117 |   req.attach('file', createTestPdfBuffer(), 'test-paper.pdf');
+      118 |
+    > 119 |   const res = await req.expect(201);
+          |                         ^
+      120 |   return res.body;
+      121 | }
+      122 |
+
+      at submitPaper (tests/helpers.ts:119:25)
+      at Object.<anonymous> (tests/paper.test.ts:178:36)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/notification.test.ts
+  GET /api/papers/:paperId/notification
+    ✕ should return decision "pending" and decisionFinal false when no decision has been recorded (1 ms)
+    ✕ should return reviews even before a final decision is recorded, allowing rebuttal-phase viewing
+    ✕ should return decisionFinal true and the final decision after the chair records it
+    ✕ should include reviewText, per-criterion scores, and recommendation in each review, and exclude confidentialNote (1 ms)
+    ✕ should include reviews alongside the final decision when both exist
+    ✕ should include a reviews array in the response even when no reviews have been submitted
+    ✕ should return 403 for a user who is not the paper submitting author
+
+  ● GET /api/papers/:paperId/notification › should return decision "pending" and decisionFinal false when no decision has been recorded
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should return reviews even before a final decision is recorded, allowing rebuttal-phase viewing
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should return decisionFinal true and the final decision after the chair records it
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should include reviewText, per-criterion scores, and recommendation in each review, and exclude confidentialNote
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should include reviews alongside the final decision when both exist
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should include a reviews array in the response even when no reviews have been submitted
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/notification › should return 403 for a user who is not the paper submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/notification.test.ts:15:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/decision.test.ts
+  POST /api/papers/:paperId/decision
+    ✕ should record an accept decision and return paperId, decision "accept", and status "accepted"
+    ✕ should record a reject decision and return status "rejected"
+    ✕ should persist the decision and update the paper status, verifiable via GET paper
+    ✕ should return 403 for non-chair roles
+  GET /api/conferences/:conferenceId/stats
+    ✕ should return aggregate stats with totalPapers, accepted, rejected, acceptanceRate, and scoreDistributions per criterion
+    ✕ should return acceptanceRate as 0 when totalPapers is 0 (1 ms)
+    ✕ should return 403 for non-chair roles
+
+  ● POST /api/papers/:paperId/decision › should record an accept decision and return paperId, decision "accept", and status "accepted"
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/decision › should record a reject decision and return status "rejected"
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/decision › should persist the decision and update the paper status, verifiable via GET paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/decision › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return aggregate stats with totalPapers, accepted, rejected, acceptanceRate, and scoreDistributions per criterion
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return aggregate stats with totalPapers, accepted, rejected, acceptanceRate, and scoreDistributions per criterion
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      83 |     .set('Authorization', `Bearer ${token}`)
+      84 |     .send(data)
+    > 85 |     .expect(201);
+         |      ^
+      86 |   return res.body;
+      87 | }
+      88 |
+
+      at createConference (tests/helpers.ts:85:6)
+      at Object.<anonymous> (tests/decision.test.ts:98:45)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return acceptanceRate as 0 when totalPapers is 0
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return acceptanceRate as 0 when totalPapers is 0
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      83 |     .set('Authorization', `Bearer ${token}`)
+      84 |     .send(data)
+    > 85 |     .expect(201);
+         |      ^
+      86 |   return res.body;
+      87 | }
+      88 |
+
+      at createConference (tests/helpers.ts:85:6)
+      at Object.<anonymous> (tests/decision.test.ts:98:45)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/decision.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/stats › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      83 |     .set('Authorization', `Bearer ${token}`)
+      84 |     .send(data)
+    > 85 |     .expect(201);
+         |      ^
+      86 |   return res.body;
+      87 | }
+      88 |
+
+      at createConference (tests/helpers.ts:85:6)
+      at Object.<anonymous> (tests/decision.test.ts:98:45)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/review.test.ts
+  POST /api/papers/:paperId/reviews
+    ✕ should submit a review and return 201 with reviewId, paperId, reviewerId, and recommendation
+    ✕ should return 403 for non-reviewer roles attempting to submit a review (1 ms)
+    ✕ should return 403 when the reviewer has no assignment for that paper
+  GET /api/papers/:paperId/reviews
+    ✕ should return all reviews with complete fields including confidentialNote for the chair
+    ✕ should persist all score fields and return matching values when retrieved by the chair
+    ✕ should return 403 for non-chair roles
+
+  ● POST /api/papers/:paperId/reviews › should submit a review and return 201 with reviewId, paperId, reviewerId, and recommendation
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/reviews › should return 403 for non-reviewer roles attempting to submit a review
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/reviews › should return 403 when the reviewer has no assignment for that paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews › should return all reviews with complete fields including confidentialNote for the chair
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews › should persist all score fields and return matching values when retrieved by the chair
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/papers/:paperId/reviews › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/review.test.ts:18:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/program.test.ts
+  POST /api/conferences/:conferenceId/program
+    ✕ should create conference sessions and return 201 with conferenceId, sessions containing sessionId, details, and paper titles
+    ✕ should return 403 for non-chair roles
+  GET /api/conferences/:conferenceId/program
+    ✕ should return the full conference program with sessions and associated paper details
+    ✕ should be accessible by any authenticated user including reviewers (1 ms)
+
+  ● POST /api/conferences/:conferenceId/program › should create conference sessions and return 201 with conferenceId, sessions containing sessionId, details, and paper titles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/program.test.ts:19:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences/:conferenceId/program › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/program.test.ts:19:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/program › should return the full conference program with sessions and associated paper details
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/program.test.ts:19:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:conferenceId/program › should be accessible by any authenticated user including reviewers
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/program.test.ts:19:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/cameraReady.test.ts
+  POST /api/papers/:paperId/camera-ready
+    ✕ should upload a camera-ready PDF and return 200 with paperId, status "camera_ready", and cameraReadyUrl
+    ✕ should return 403 when the paper decision is not "accept"
+    ✕ should return 403 when no decision has been recorded for the paper
+    ✕ should return 403 with error message when the camera-ready deadline has passed
+    ✕ should update the paper status to "camera_ready", verifiable via GET paper
+    ✕ should return 403 for a user who is not the paper submitting author
+
+  ● POST /api/papers/:paperId/camera-ready › should upload a camera-ready PDF and return 200 with paperId, status "camera_ready", and cameraReadyUrl
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/camera-ready › should return 403 when the paper decision is not "accept"
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/camera-ready › should return 403 when no decision has been recorded for the paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/camera-ready › should return 403 with error message when the camera-ready deadline has passed
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/camera-ready › should update the paper status to "camera_ready", verifiable via GET paper
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/papers/:paperId/camera-ready › should return 403 for a user who is not the paper submitting author
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/cameraReady.test.ts:14:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/conference.test.ts
+  POST /api/conferences
+    ✕ should create a conference and return 201 with id and all provided fields including topicAreas as a JSON array
+    ✕ should return 403 for non-chair roles
+  GET /api/conferences/:id
+    ✕ should return the full conference record including all stored fields by ID
+    ✕ should return 404 for a non-existent conference ID
+    ✕ should be accessible by any authenticated user, not only chairs
+
+  ● POST /api/conferences › should create a conference and return 201 with id and all provided fields including topicAreas as a JSON array
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/conference.test.ts:9:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● POST /api/conferences › should return 403 for non-chair roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/conference.test.ts:9:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:id › should return the full conference record including all stored fields by ID
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/conference.test.ts:9:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:id › should return 404 for a non-existent conference ID
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/conference.test.ts:9:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/conferences/:id › should be accessible by any authenticated user, not only chairs
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/conference.test.ts:9:35)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+FAIL tests/auth.test.ts
+  POST /api/auth/register
+    ✕ should register a new user and return 201 with a signed JWT token and a user object containing id, name, email, and role (18 ms)
+    ✕ should register users with each of the three roles: chair, reviewer, author (8 ms)
+  POST /api/auth/login
+    ✕ should authenticate with valid credentials and return 200 with a JWT token and user object (7 ms)
+    ✕ should return 401 for an unrecognized email address (6 ms)
+    ✕ should return 401 for an incorrect password (7 ms)
+  JWT authentication middleware
+    ✕ should return 401 when the Authorization header is absent (8 ms)
+    ✕ should return 401 when the token is invalid or malformed (8 ms)
+    ✕ should return 401 when the token is expired (45 ms)
+
+  ● POST /api/auth/register › should register a new user and return 201 with a signed JWT token and a user object containing id, name, email, and role
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 500
+
+      13 |       .send({ name: 'Alice Chair', email, password: 'securePass1', role: 'chair' });
+      14 |
+    > 15 |     expect(res.status).toBe(201);
+         |                        ^
+      16 |     expect(res.body).toHaveProperty('token');
+      17 |     expect(typeof res.body.token).toBe('string');
+      18 |     expect(res.body).toHaveProperty('user');
+
+      at Object.<anonymous> (tests/auth.test.ts:15:24)
+
+  ● POST /api/auth/register › should register users with each of the three roles: chair, reviewer, author
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 500
+
+      31 |         .send({ name: `User ${role}`, email, password: 'pass123', role });
+      32 |
+    > 33 |       expect(res.status).toBe(201);
+         |                          ^
+      34 |       expect(res.body.user.role).toBe(role);
+      35 |       expect(res.body).toHaveProperty('token');
+      36 |     }
+
+      at Object.<anonymous> (tests/auth.test.ts:33:26)
+
+  ● POST /api/auth/login › should authenticate with valid credentials and return 200 with a JWT token and user object
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 500
+
+      53 |       .send({ email: loginEmail, password: loginPassword });
+      54 |
+    > 55 |     expect(res.status).toBe(200);
+         |                        ^
+      56 |     expect(res.body).toHaveProperty('token');
+      57 |     expect(typeof res.body.token).toBe('string');
+      58 |     expect(res.body).toHaveProperty('user');
+
+      at Object.<anonymous> (tests/auth.test.ts:55:24)
+
+  ● POST /api/auth/login › should return 401 for an unrecognized email address
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      68 |       .send({ email: 'nobody@nowhere.com', password: loginPassword });
+      69 |
+    > 70 |     expect(res.status).toBe(401);
+         |                        ^
+      71 |   });
+      72 |
+      73 |   it('should return 401 for an incorrect password', async () => {
+
+      at Object.<anonymous> (tests/auth.test.ts:70:24)
+
+  ● POST /api/auth/login › should return 401 for an incorrect password
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      76 |       .send({ email: loginEmail, password: 'wrongpassword' });
+      77 |
+    > 78 |     expect(res.status).toBe(401);
+         |                        ^
+      79 |   });
+      80 | });
+      81 |
+
+      at Object.<anonymous> (tests/auth.test.ts:78:24)
+
+  ● JWT authentication middleware › should return 401 when the Authorization header is absent
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      83 |   it('should return 401 when the Authorization header is absent', async () => {
+      84 |     const res = await request(app).get('/api/reviewers/profile');
+    > 85 |     expect(res.status).toBe(401);
+         |                        ^
+      86 |   });
+      87 |
+      88 |   it('should return 401 when the token is invalid or malformed', async () => {
+
+      at Object.<anonymous> (tests/auth.test.ts:85:24)
+
+  ● JWT authentication middleware › should return 401 when the token is invalid or malformed
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      91 |       .set('Authorization', 'Bearer invalid.token.value');
+      92 |
+    > 93 |     expect(res.status).toBe(401);
+         |                        ^
+      94 |   });
+      95 |
+      96 |   it('should return 401 when the token is expired', async () => {
+
+      at Object.<anonymous> (tests/auth.test.ts:93:24)
+
+  ● JWT authentication middleware › should return 401 when the token is expired
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 500
+
+      106 |       .set('Authorization', `Bearer ${expiredToken}`);
+      107 |
+    > 108 |     expect(res.status).toBe(401);
+          |                        ^
+      109 |   });
+      110 | });
+      111 |
+
+      at Object.<anonymous> (tests/auth.test.ts:108:24)
+
+FAIL tests/reviewer.test.ts
+  PUT /api/reviewers/profile
+    ✕ should save the reviewer profile and return 200 with reviewerId, expertise array, and conflicts array
+    ✕ should return 403 for non-reviewer roles
+  GET /api/reviewers/profile
+    ✕ should return the authenticated reviewer stored expertise and conflicts arrays
+    ✕ should return 403 for non-reviewer roles
+
+  ● PUT /api/reviewers/profile › should save the reviewer profile and return 200 with reviewerId, expertise array, and conflicts array
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/reviewer.test.ts:9:38)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● PUT /api/reviewers/profile › should return 403 for non-reviewer roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/reviewer.test.ts:9:38)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/profile › should return the authenticated reviewer stored expertise and conflicts arrays
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/reviewer.test.ts:9:38)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+  ● GET /api/reviewers/profile › should return 403 for non-reviewer roles
+
+    expected 201 "Created", got 500 "Internal Server Error"
+
+      50 |     .post('/api/auth/register')
+      51 |     .send({ name, email, password, role })
+    > 52 |     .expect(201);
+         |      ^
+      53 |   return res.body;
+      54 | }
+      55 |
+
+      at registerUser (tests/helpers.ts:52:6)
+      at Object.<anonymous> (tests/reviewer.test.ts:9:38)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+Test Suites: 11 failed, 11 total
+Tests:       91 failed, 91 total
+Snapshots:   0 total
+Time:        4.108 s
+Ran all test suites.
